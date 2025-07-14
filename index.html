@@ -1,105 +1,153 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Darkhalo Studios</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Darkhalo Multi-Media</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: #0d0f11;
+      color: #d0e0ef;
+    }
 
-  <!-- Orbitron Font (HUD-style) -->
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+    header {
+      text-align: center;
+      padding: 4rem 2rem 2rem;
+    }
 
-<style>
-  body {
-    margin: 0;
-    background-color: #0d0f11;
-    font-family: 'Orbitron', sans-serif;
-    color: #d0e0ef;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 4rem;
-    background-image: radial-gradient(circle at center, #12161c 0%, #0d0f11 100%);
-  }
+    header h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 3rem;
+      color: #7df9ff;
+      letter-spacing: 2px;
+      margin: 0;
+    }
 
-  h1 {
-    font-size: 3rem;
-    color: #7df9ff;
-    text-shadow: 0 0 5px #7df9ff, 0 0 15px #7df9ff;
-    margin-bottom: 1rem;
-    letter-spacing: 1px;
-  }
+    header p {
+      font-size: 1.1rem;
+      color: #c4d2e0;
+      margin-top: 0.5rem;
+    }
 
-  img {
-    max-width: 220px;
-    margin-bottom: 2rem;
-    box-shadow: 0 0 25px #7df9ff66;
-    border-radius: 8px;
-    border: 2px solid #7df9ff;
-  }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      padding: 3rem 2rem;
+    }
 
-  p {
-    font-size: 1.1rem;
-    max-width: 600px;
-    text-align: center;
-    line-height: 1.6;
-    color: #d0e0ef;
-  }
+    .card {
+      background-color: #12161c;
+      border: 1px solid #7df9ff33;
+      padding: 2rem;
+      border-radius: 8px;
+      text-align: center;
+      transition: all 0.2s ease-in-out;
+    }
 
-  nav {
-    position: fixed;
-    left: 0;
-    top: 0;
-    height: 100%;
-    width: 200px;
-    background: #12161c;
-    padding-top: 4rem;
-    border-right: 1px solid #7df9ff;
-  }
+    .card:hover {
+      border-color: #7df9ff;
+      background-color: #141a21;
+    }
 
-  nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
+    .card h2 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: #7df9ff;
+    }
 
-  nav li {
-    margin: 1rem 0;
-  }
+    .card p {
+      font-size: 0.95rem;
+      color: #d0e0ef;
+      line-height: 1.4;
+    }
 
-  nav a {
-    color: #d0e0ef;
-    text-decoration: none;
-    font-weight: bold;
-    padding: 0.5rem 1rem;
-    display: block;
-    transition: all 0.2s ease-in-out;
-  }
+    .card a {
+      display: inline-block;
+      margin-top: 1.2rem;
+      color: #7df9ff;
+      text-decoration: none;
+      font-weight: bold;
+    }
 
-  nav a:hover {
-    background: #7df9ff12;
-    border-left: 2px solid #7df9ff;
-    color: #7df9ff;
-  }
+    .card a:hover {
+      text-decoration: underline;
+    }
 
-  main {
-    margin-left: 220px;
-    padding: 4rem;
-  }
-</style>
+    .mission {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+      padding: 4rem 2rem 2rem;
+    }
+
+    .mission h3 {
+      font-size: 1.3rem;
+      color: #7df9ff;
+      margin-bottom: 1rem;
+      font-family: 'Orbitron', sans-serif;
+    }
+
+    .mission p {
+      font-size: 1rem;
+      color: #d0e0ef;
+      line-height: 1.6;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.85rem;
+      color: #8f9aa8;
+      border-top: 1px solid #7df9ff12;
+      margin-top: 2rem;
+    }
+  </style>
 </head>
-<body>
-  <nav>
-    <ul>
-      <li><a href="animations.html">Animations</a></li>
-      <li><a href="music.html">Music</a></li>
-      <li><a href="lore.html">Lore</a></li>
-      <li><a href="commissions.html">Commissions</a></li>
-    </ul>
-  </nav>
 
-  <main>
-    <img src="dark-halo logo.png" alt="Darkhalo Studios logo">
-    <h1>Welcome to Darkhalo Studios</h1>
-    <p>Your portal for animation, music, and lore.</p>
-  </main>
+<body>
+  <header>
+    <h1>Darkhalo Multi-Media</h1>
+    <p>Sound. Motion. Story. Signal.</p>
+  </header>
+
+  <div class="grid">
+    <div class="card">
+      <h2>🎵 Music Vault</h2>
+      <p>Explore sonic environments, remix projects, and layered atmospheres crafted by Darkhalo.</p>
+      <a href="music.html">Enter</a>
+    </div>
+    <div class="card">
+      <h2>🎬 Animation Archive</h2>
+      <p>Motion experiments, choreography, and cinematic shorts — built from the pixels up.</p>
+      <a href="animations.html">Enter</a>
+    </div>
+    <div class="card">
+      <h2> Lore Index</h2>
+      <p>Campaigns, world-building, and mythos entries. Tactical narrative meets deep roleplay.</p>
+      <a href="lore.html">Enter</a>
+    </div>
+    <div class="card">
+      <h2> Commissions</h2>
+      <p>Request custom work, contact Darkhalo, or join the signal. Professional-grade collaborations.</p>
+      <a href="commissions.html">Engage</a>
+    </div>
+  </div>
+
+  <section class="mission">
+    <h3>Studio Statement</h3>
+    <p>
+      Darkhalo Multi-Media is a creator-driven studio forging sonic, visual, and narrative atmospheres. Our work distorts convention, embraces signal chaos, and elevates artistic storytelling across mediums. Whether you're exploring sound design, tactical animation, or mythic campaigns, Darkhalo delivers immersive energy with unmatched vision.
+    </p>
+  </section>
+
+  <footer>
+    &copy; 2025 Darkhalo Multi-Media. Built by  G0LDKNGHT23
+  </footer>
 </body>
 </html>
