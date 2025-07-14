@@ -12,13 +12,14 @@
       font-family: 'Orbitron', sans-serif;
       padding: 4rem;
       margin: 0;
+      overflow: hidden;
     }
 
     h1 {
       font-size: 3rem;
       color: #7df9ff;
       opacity: 0;
-      animation: contentDrop 0.6s ease-in-out 2.2s forwards;
+      animation: contentDrop 0.6s ease-in-out 2.5s forwards;
     }
 
     p {
@@ -26,7 +27,7 @@
       max-width: 600px;
       line-height: 1.6;
       opacity: 0;
-      animation: contentDrop 0.6s ease-in-out 2.6s forwards;
+      animation: contentDrop 0.6s ease-in-out 2.9s forwards;
     }
 
     /* Loading Overlay */
@@ -34,37 +35,43 @@
       position: fixed;
       top: 0; left: 0;
       width: 100%; height: 100%;
-      background-color: #0d0f11;
-      color: #7df9ff;
+      background-color: #000;
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 2rem;
       font-family: 'Orbitron', sans-serif;
+      color: #7df9ff;
       z-index: 9999;
-      animation: glitchOut 2s forwards;
+      animation: glitchFlash 2s forwards;
     }
 
     #loadingText {
-      animation: textGlitch 0.8s infinite;
+      animation: textGlitch 1.5s infinite;
     }
 
-    @keyframes glitchOut {
-      0% { transform: none; opacity: 1; }
-      20% { transform: skewX(10deg) scale(1.1); opacity: 0.8; }
-      40% { transform: skewX(-10deg) scale(1.2); opacity: 0.5; }
-      60% { transform: translateX(5px) scale(0.9); opacity: 0.3; }
-      80% { transform: translateX(-5px); opacity: 0.1; }
-      100% { opacity: 0; visibility: hidden; transform: none; }
+    /* Glitch Flash Sequence */
+    @keyframes glitchFlash {
+      0%   { background: #000; transform: none; opacity: 1; }
+      10%  { background: #444; transform: skewX(20deg); }
+      20%  { background: #fff; transform: skewX(-15deg) scale(1.1); }
+      30%  { background: #222; transform: translateX(10px); }
+      40%  { background: #000; transform: translateX(-10px); }
+      50%  { background: #666; transform: scale(1.2) rotate(1deg); }
+      60%  { background: #111; opacity: 0.4; }
+      70%  { background: #000; opacity: 0.2; }
+      100% { background: #0d0f11; opacity: 0; visibility: hidden; }
     }
 
+    /* Text glitch flicker */
     @keyframes textGlitch {
-      0%, 100% { opacity: 1; transform: none; }
+      0%, 100% { transform: none; opacity: 1; }
       25% { transform: translateX(-2px); opacity: 0.6; }
       50% { transform: translateX(2px); opacity: 0.2; }
       75% { transform: translateX(-1px); opacity: 0.8; }
     }
 
+    /* Content fade-in */
     @keyframes contentDrop {
       to { opacity: 1; transform: translateY(0); }
     }
