@@ -11,55 +11,62 @@
       color: #d0e0ef;
       font-family: 'Orbitron', sans-serif;
       padding: 4rem;
+      margin: 0;
     }
 
     h1 {
       font-size: 3rem;
       color: #7df9ff;
       opacity: 0;
-      animation: contentFade 2s ease-in-out 3s forwards;
+      animation: contentDrop 0.6s ease-in-out 2.2s forwards;
     }
 
     p {
+      font-size: 1.2rem;
+      max-width: 600px;
+      line-height: 1.6;
       opacity: 0;
-      animation: contentFade 2s ease-in-out 3.5s forwards;
+      animation: contentDrop 0.6s ease-in-out 2.6s forwards;
     }
 
     /* Loading Overlay */
     #loadingOverlay {
       position: fixed;
       top: 0; left: 0;
-      width: 100%;
-      height: 100%;
+      width: 100%; height: 100%;
       background-color: #0d0f11;
       color: #7df9ff;
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 2rem;
+      font-family: 'Orbitron', sans-serif;
       z-index: 9999;
-      animation: fadeOut 3s forwards;
+      animation: glitchOut 2s forwards;
     }
 
     #loadingText {
-      animation: glitch 1s ease-in-out infinite;
-      font-family: 'Orbitron', sans-serif;
+      animation: textGlitch 0.8s infinite;
     }
 
-    @keyframes fadeOut {
-      0% { opacity: 1; }
-      100% { opacity: 0; visibility: hidden; }
+    @keyframes glitchOut {
+      0% { transform: none; opacity: 1; }
+      20% { transform: skewX(10deg) scale(1.1); opacity: 0.8; }
+      40% { transform: skewX(-10deg) scale(1.2); opacity: 0.5; }
+      60% { transform: translateX(5px) scale(0.9); opacity: 0.3; }
+      80% { transform: translateX(-5px); opacity: 0.1; }
+      100% { opacity: 0; visibility: hidden; transform: none; }
     }
 
-    @keyframes glitch {
+    @keyframes textGlitch {
       0%, 100% { opacity: 1; transform: none; }
-      25% { opacity: 0.7; transform: translateX(-2px); }
-      50% { opacity: 0.2; transform: translateX(2px); }
-      75% { opacity: 0.9; transform: translateX(-1px); }
+      25% { transform: translateX(-2px); opacity: 0.6; }
+      50% { transform: translateX(2px); opacity: 0.2; }
+      75% { transform: translateX(-1px); opacity: 0.8; }
     }
 
-    @keyframes contentFade {
-      to { opacity: 1; }
+    @keyframes contentDrop {
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
@@ -69,7 +76,9 @@
     <span id="loadingText">Loading Music...</span>
   </div>
 
-  <h1>Music</h1>
-  <p>Welcome to the audio vault. Explore remixes, soundscapes, and rhythm experiments.</p>
+  <main>
+    <h1>Music</h1>
+    <p>Welcome to the audio vault. Explore remixes, soundscapes, and rhythm experiments.</p>
+  </main>
 </body>
 </html>
