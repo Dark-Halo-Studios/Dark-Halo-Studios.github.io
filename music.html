@@ -2,16 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Music| Darkhalo Studios</title>
+  <title>Music | Darkhalo Multi-Media</title>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+  
   <style>
-    <head>
-  <meta charset="UTF-8">
-  <title>Music | Darkhalo</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
-
-  <style>
-    /* Your existing style starts here */
     body {
       background-color: #0d0f11;
       color: #d0e0ef;
@@ -22,65 +16,60 @@
     h1 {
       font-size: 3rem;
       color: #7df9ff;
+      opacity: 0;
+      animation: contentFade 2s ease-in-out 3s forwards;
     }
 
-    /* ⬇️ Paste the new animations below this */
+    p {
+      opacity: 0;
+      animation: contentFade 2s ease-in-out 3.5s forwards;
+    }
+
+    /* Loading Overlay */
     #loadingOverlay {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: #0d0f11;
-  color: #7df9ff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: 'Orbitron', sans-serif;
-  font-size: 2rem;
-  z-index: 9999;
-  animation: fadeOut 3s forwards;
-}
-
-@keyframes fadeOut {
-  0% { opacity: 1; }
-  100% { opacity: 0; visibility: hidden; }
-}
-
-@keyframes glitch {
-  0%, 100% { opacity: 1; transform: none; }
-  25% { opacity: 0.7; transform: translateX(-2px); }
-  50% { opacity: 0.2; transform: translateX(2px); }
-  75% { opacity: 0.9; transform: translateX(-1px); }
-}
-
-#loadingText {
-  animation: glitch 1s ease-in-out infinite;
-}
-
-main {
-  opacity: 0;
-  animation: contentFade 2s ease-in-out 3s forwards;
-}
-
-@keyframes contentFade {
-  to { opacity: 1; }
-}
-    body {
-      background-color: #0b0f16;
-      color: #d6faff;
-      font-family: 'Orbitron', sans-serif;
-      padding: 4rem;
-    }
-    h1 {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #0d0f11;
+      color: #7df9ff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       font-size: 2rem;
-      color: #00ffe7;
+      z-index: 9999;
+      animation: fadeOut 3s forwards;
+    }
+
+    #loadingText {
+      animation: glitch 1s ease-in-out infinite;
+      font-family: 'Orbitron', sans-serif;
+    }
+
+    @keyframes fadeOut {
+      0% { opacity: 1; }
+      100% { opacity: 0; visibility: hidden; }
+    }
+
+    @keyframes glitch {
+      0%, 100% { opacity: 1; transform: none; }
+      25% { opacity: 0.7; transform: translateX(-2px); }
+      50% { opacity: 0.2; transform: translateX(2px); }
+      75% { opacity: 0.9; transform: translateX(-1px); }
+    }
+
+    @keyframes contentFade {
+      to { opacity: 1; }
     }
   </style>
+</head>
+
+<body>
+  <div id="loadingOverlay">
+    <span id="loadingText">Loading Music...</span>
   </div>
+
   <h1>Music</h1>
   <p>Welcome to the audio vault. Explore remixes, soundscapes, and rhythm experiments.</p>
-</body>
-  <h1>Music</h1>
-  <p>This is where you'll find links to my Songs, Remixes, and anything Musical!.</p>
 </body>
 </html>
