@@ -2,16 +2,43 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Darkhalo Multi-Media</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
+
+  <!-- Google Fonts: Montserrat & Inter -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Inter:wght@400;500;700&display=swap"
+    rel="stylesheet"/>
+
   <style>
-    body {
+    :root {
+      --bg: #121316;            /* Graphite depth */
+      --surface: #1a1c1f;       /* Slate black */
+      --steel: #b4b4b4;         /* Soft steel */
+      --violet: #7370d9;        /* Digital violet */
+      --rust: #e86f46;          /* Warm rust */
+      --white: #f2f2f2;         /* Ash white */
+    }
+
+    * {
+      box-sizing: border-box;
       margin: 0;
+      padding: 0;
+    }
+
+    body {
       font-family: 'Inter', sans-serif;
-      background-color: #0d0f11;
-      color: #d0e0ef;
+      background-color: var(--bg);
+      color: var(--white);
+      line-height: 1.6;
+    }
+
+    a {
+      color: var(--rust);
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
     }
 
     header {
@@ -19,18 +46,27 @@
       padding: 4rem 2rem 2rem;
     }
 
-    header h1 {
-      font-family: 'Orbitron', sans-serif;
+    header .logo {
+      max-width: 160px;
+      margin-bottom: 1rem;
+      filter: drop-shadow(0 0 8px var(--violet)80);
+    }
+
+    .glow {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
       font-size: 3rem;
-      color: #7df9ff;
-      letter-spacing: 2px;
-      margin: 0;
+      color: var(--violet);
+      text-shadow:
+        0 0 8px var(--violet)55,
+        0 0 16px var(--violet)33;
     }
 
     header p {
-      font-size: 1.1rem;
-      color: #c4d2e0;
       margin-top: 0.5rem;
+      font-size: 1.1rem;
+      color: var(--steel);
+      font-weight: 400;
     }
 
     .grid {
@@ -41,61 +77,53 @@
     }
 
     .card {
-      background-color: #12161c;
-      border: 1px solid #7df9ff33;
-      padding: 2rem;
+      background-color: var(--surface);
+      border: 1px solid var(--steel)33;
       border-radius: 8px;
+      padding: 2rem;
       text-align: center;
-      transition: all 0.2s ease-in-out;
+      transition: background-color 0.2s, border-color 0.2s;
     }
-
     .card:hover {
-      border-color: #7df9ff;
-      background-color: #141a21;
+      background-color: #202327;
+      border-color: var(--rust);
     }
 
     .card h2 {
-      font-family: 'Orbitron', sans-serif;
+      font-family: 'Montserrat', sans-serif;
       font-size: 1.5rem;
       margin-bottom: 1rem;
-      color: #7df9ff;
+      color: var(--violet);
     }
 
     .card p {
       font-size: 0.95rem;
-      color: #d0e0ef;
-      line-height: 1.4;
+      color: var(--steel);
+      margin-bottom: 1.2rem;
     }
 
     .card a {
+      font-weight: 700;
       display: inline-block;
-      margin-top: 1.2rem;
-      color: #7df9ff;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    .card a:hover {
-      text-decoration: underline;
     }
 
     .mission {
       max-width: 800px;
       margin: 0 auto;
-      text-align: center;
       padding: 4rem 2rem 2rem;
+      text-align: center;
     }
 
     .mission h3 {
+      font-family: 'Montserrat', sans-serif;
       font-size: 1.3rem;
-      color: #7df9ff;
+      color: var(--violet);
       margin-bottom: 1rem;
-      font-family: 'Orbitron', sans-serif;
     }
 
     .mission p {
       font-size: 1rem;
-      color: #d0e0ef;
+      color: var(--steel);
       line-height: 1.6;
     }
 
@@ -104,7 +132,7 @@
       padding: 2rem;
       font-size: 0.85rem;
       color: #8f9aa8;
-      border-top: 1px solid #7df9ff12;
+      border-top: 1px solid var(--violet)12;
       margin-top: 2rem;
     }
   </style>
@@ -112,29 +140,33 @@
 
 <body>
   <header>
-    <h1>Darkhalo Multi-Media</h1>
+    <img src="logo.png" alt="Darkhalo Logo" class="logo"/>
+    <h1 class="glow">Darkhalo Multi-Media</h1>
     <p>Sound. Motion. Story. Signal.</p>
   </header>
 
   <div class="grid">
     <div class="card">
-      <h2>🎵 Music Vault</h2>
-      <p>Explore sonic environments, remix projects, and layered atmospheres crafted by Darkhalo.</p>
+      <h2> Music Vault</h2>
+      <p>Layered atmospheres, remixes, and original compositions from Darkhalo.</p>
       <a href="music.html">Enter</a>
     </div>
+
     <div class="card">
-      <h2>🎬 Animation Archive</h2>
-      <p>Motion experiments, choreography, and cinematic shorts — built from the pixels up.</p>
+      <h2>Animation Archive</h2>
+      <p>Cinematic shorts, motion experiments, and visual storytelling reels.</p>
       <a href="animations.html">Enter</a>
     </div>
+
     <div class="card">
       <h2> Lore Index</h2>
-      <p>Campaigns, world-building, and mythos entries. Tactical narrative meets deep roleplay.</p>
+      <p>World-building dossiers, campaign logs, and narrative fragments.</p>
       <a href="lore.html">Enter</a>
     </div>
+
     <div class="card">
       <h2> Commissions</h2>
-      <p>Request custom work, contact Darkhalo, or join the signal. Professional-grade collaborations.</p>
+      <p>Professional collaboration inquiries, custom projects, and studio partnerships.</p>
       <a href="commissions.html">Engage</a>
     </div>
   </div>
@@ -142,12 +174,14 @@
   <section class="mission">
     <h3>Studio Statement</h3>
     <p>
-      Darkhalo Multi-Media is a creator-driven studio forging sonic, visual, and narrative atmospheres. Our work distorts convention, embraces signal chaos, and elevates artistic storytelling across mediums. Whether you're exploring sound design, tactical animation, or mythic campaigns, Darkhalo delivers immersive energy with unmatched vision.
+      Darkhalo Multi-Media is a creator-driven studio forging sonic, visual, and narrative atmospheres. Our work distorts
+      convention, embraces signal chaos, and elevates storytelling across mediums. Whether you're exploring sound design,
+      tactical animation, or mythic world-building, Darkhalo delivers immersive experiences with uncompromising vision.
     </p>
   </section>
 
   <footer>
-    &copy; 2025 Darkhalo Multi-Media. Built by  G0LDKNGHT23
+    &copy; 2025 Darkhalo Multi-Media. Signal broadcast by G0LDKNGHT23.
   </footer>
 </body>
 </html>
