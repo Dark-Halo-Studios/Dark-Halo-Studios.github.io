@@ -5,18 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Darkhalo Multi-Media</title>
 
-  <!-- Google Fonts: Montserrat & Inter -->
+  <!-- Fonts -->
   <link
     href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Inter:wght@400;500;700&display=swap"
     rel="stylesheet"/>
 
   <style>
     :root {
-      --bg: #121316;       /* Graphite depth */
-      --surface: #1a1c1f;  /* Slate black */
-      --steel: #b4b4b4;    /* Soft steel */
-      --rust: #e86f46;     /* Warm rust */
-      --white: #f2f2f2;    /* Ash white */
+      --bg: #121316;
+      --surface: #1a1c1f;
+      --steel: #b4b4b4;
+      --rust: #e86f46;
+      --white: #f2f2f2;
+      --border: #555555;
     }
 
     *, *::before, *::after {
@@ -30,23 +31,78 @@
       background-color: var(--bg);
       color: var(--white);
       line-height: 1.6;
+      display: flex;
+      flex-direction: row;
+      min-height: 100vh;
     }
 
-    a {
-      color: var(--rust);
-      text-decoration: none;
+    /* Sidebar */
+    aside {
+      width: 280px;
+      background-color: var(--surface);
+      border-right: 1px solid var(--border);
+      padding: 2rem;
     }
-    a:hover {
-      text-decoration: underline;
+
+    aside h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.2rem;
+      color: var(--rust);
+      margin-bottom: 1.5rem;
+    }
+
+    aside section {
+      margin-bottom: 2rem;
+    }
+
+    aside h3 {
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+      color: var(--white);
+    }
+
+    aside p {
+      font-size: 0.9rem;
+      color: var(--steel);
+      margin-bottom: 0.4rem;
+    }
+
+    aside a {
+      color: var(--rust);
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    details summary {
+      color: var(--white);
+      font-weight: bold;
+      cursor: pointer;
+      margin-bottom: 0.5rem;
+    }
+
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    ul li {
+      margin-bottom: 0.3rem;
+      font-size: 0.9rem;
+    }
+
+    /* Main Content */
+    main {
+      flex: 1;
+      padding: 2rem;
     }
 
     header {
       text-align: center;
-      padding: 4rem 2rem 2rem;
+      padding: 2rem;
     }
 
-    header .logo {
-      max-width: 160px;
+    .logo {
+      max-width: 140px;
       margin-bottom: 1rem;
       filter: drop-shadow(0 0 8px var(--rust)80);
     }
@@ -54,35 +110,33 @@
     h1.glow {
       font-family: 'Montserrat', sans-serif;
       font-weight: 700;
-      font-size: 3rem;
+      font-size: 2.8rem;
       color: var(--rust);
-      text-shadow:
-        0 0 8px var(--rust)55,
-        0 0 16px var(--rust)33;
+      text-shadow: 0 0 8px var(--rust)55, 0 0 16px var(--rust)33;
     }
 
     header p {
-      margin-top: 0.5rem;
-      font-size: 1.1rem;
+      font-size: 1rem;
       color: var(--steel);
-      font-weight: 400;
+      margin-top: 0.5rem;
     }
 
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
       gap: 2rem;
-      padding: 3rem 2rem;
+      padding: 2rem 0;
     }
 
     .card {
       background-color: var(--surface);
       border: 1px solid var(--steel)33;
       border-radius: 8px;
-      padding: 2rem;
+      padding: 1.5rem;
       text-align: center;
       transition: background-color 0.2s, border-color 0.2s;
     }
+
     .card:hover {
       background-color: #1f2023;
       border-color: var(--rust);
@@ -90,96 +144,142 @@
 
     .card h2 {
       font-family: 'Montserrat', sans-serif;
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
+      font-size: 1.4rem;
+      margin-bottom: 0.8rem;
       color: var(--rust);
     }
 
     .card p {
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       color: var(--steel);
-      margin-bottom: 1.2rem;
+      margin-bottom: 1rem;
     }
 
     .card a {
-      font-weight: 700;
-      display: inline-block;
+      font-weight: bold;
+      color: var(--rust);
     }
 
     .mission {
       max-width: 800px;
       margin: 0 auto;
-      padding: 4rem 2rem 2rem;
+      padding: 2rem 1rem;
       text-align: center;
     }
 
     .mission h3 {
       font-family: 'Montserrat', sans-serif;
-      font-size: 1.3rem;
+      font-size: 1.2rem;
       color: var(--rust);
       margin-bottom: 1rem;
     }
 
     .mission p {
-      font-size: 1rem;
+      font-size: 0.95rem;
       color: var(--steel);
     }
 
     footer {
       text-align: center;
       padding: 2rem;
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       color: #8f9aa8;
       border-top: 1px solid var(--rust)12;
       margin-top: 2rem;
+    }
+
+    /* Responsive Sidebar */
+    @media (max-width: 860px) {
+      body {
+        flex-direction: column;
+      }
+
+      aside {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+      }
     }
   </style>
 </head>
 
 <body>
-  <header>
-    <img src="dark-halo logo.png" alt="Darkhalo Logo" class="logo"/>
-    <h1 class="glow">Darkhalo Multi-Media</h1>
-    <p>Sound. Motion. Story. Signal.</p>
-  </header>
+  <aside id="sidebar">
+    <h2>Studio Feedback</h2>
 
-  <div class="grid">
-    <div class="card">
-      <h2> Music Vault</h2>
-      <p>Layered atmospheres, remixes, and original compositions.</p>
-      <a href="music.html">Enter</a>
+    <section>
+      <h3> Report a Bug</h3>
+      <p>If something breaks or glitches:</p>
+      <a href="mailto:darkhalo.studio@gmail.com">darkhalo.studio@gmail.com</a>
+    </section>
+
+    <section>
+      <details>
+        <summary>Review or Suggest Something</summary>
+        <p>You can share thoughts or pitch ideas:</p>
+        <ul>
+          <li> Suggestions → <a href="mailto:darkhalo.studio@gmail.com">darkhalo.studio@gmail.com</a></li>
+          <li> Review → <a href="mailto:darkhalo.studio@gmail.com">Leave Review</a></li>
+        </ul>
+      </details>
+    </section>
+
+    <section>
+      <h3> Join the Signal</h3>
+      <p>Follow our updates or engage directly:</p>
+      <a href="https://discord.gg/XA9H64CZ">Discord Invite</a>
+    </section>
+
+    <section>
+      <h3> Apply for Collaborations</h3>
+      <p>Want to build with Darkhalo?</p>
+      <a href="mailto:darkhalo.studio@gmail.com">Send a proposal</a>
+    </section>
+  </aside>
+
+  <main>
+    <header>
+      <img src="logo.png" alt="Darkhalo Logo" class="logo"/>
+      <h1 class="glow">Darkhalo Multi-Media</h1>
+      <p>Sound. Motion. Story. Signal.</p>
+    </header>
+
+    <div class="grid">
+      <div class="card">
+        <h2> Music Vault</h2>
+        <p>Layered atmospheres, remixes, and original compositions.</p>
+        <a href="music.html">Enter</a>
+      </div>
+      <div class="card">
+        <h2> Animation Archive</h2>
+        <p>Cinematic shorts, motion experiments, and visual storytelling.</p>
+        <a href="animations.html">Enter</a>
+      </div>
+      <div class="card">
+        <h2> Lore Index</h2>
+        <p>Campaign logs, world-building dossiers, and narrative fragments.</p>
+        <a href="lore.html">Enter</a>
+      </div>
+      <div class="card">
+        <h2> Commissions</h2>
+        <p>Professional collaborations, custom projects, and studio partnerships.</p>
+        <a href="commissions.html">Engage</a>
+      </div>
     </div>
 
-    <div class="card">
-      <h2> Animation Archive</h2>
-      <p>Cinematic shorts, motion experiments, and visual storytelling.</p>
-      <a href="animations.html">Enter</a>
-    </div>
+    <section class="mission">
+      <h3>Studio Statement</h3>
+      <p>
+        Darkhalo Multi-Media is a creator-driven studio forging sonic, visual, and narrative atmospheres.
+        Our work distorts convention and elevates storytelling across mediums.
+        Whether exploring sound design, tactical animation, or mythic world-building,
+        Darkhalo delivers immersive experiences with uncompromising vision.
+      </p>
+    </section>
 
-    <div class="card">
-      <h2> Lore Index</h2>
-      <p>Campaign logs, world-building dossiers, and narrative fragments.</p>
-      <a href="lore.html">Enter</a>
-    </div>
-
-    <div class="card">
-      <h2> Commissions</h2>
-      <p>Professional collaborations, custom projects, and studio partnerships.</p>
-      <a href="commissions.html">Engage</a>
-    </div>
-  </div>
-
-  <section class="mission">
-    <h3>Studio Statement</h3>
-    <p>
-      Darkhalo Multi-Media is a creator-driven studio forging sonic, visual, and narrative atmospheres.
-      Our work distorts convention and elevates storytelling across mediums. Whether exploring sound design,
-      tactical animation, or mythic world-building, Darkhalo delivers immersive experiences with uncompromising vision.
-    </p>
-  </section>
-
-  <footer>
-    &copy; 2025 Darkhalo Multi-Media. Signal broadcast by G0LDKNGHT23.
-  </footer>
+    <footer>
+      2025 Darkhalo Multi-Media. Signal broadcast by G0LDKNGHT23.
+    </footer>
+  </main>
 </body>
 </html>
