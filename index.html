@@ -30,75 +30,81 @@
       font-family: 'Inter', sans-serif;
       background-color: var(--bg);
       color: var(--white);
-      line-height: 1.6;
       display: flex;
-      flex-direction: row;
       min-height: 100vh;
+      transition: margin-left 0.3s ease;
     }
 
-    /* Sidebar */
-    aside {
+    #sidebar {
       width: 280px;
+      min-height: 100vh;
       background-color: var(--surface);
       border-right: 1px solid var(--border);
       padding: 2rem;
+      position: fixed;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      overflow-y: auto;
+      transition: width 0.3s ease;
     }
 
-    aside h2 {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 1.2rem;
-      color: var(--rust);
-      margin-bottom: 1.5rem;
+    #sidebar.collapsed {
+      width: 40px;
+      overflow: hidden;
     }
 
-    aside section {
-      margin-bottom: 2rem;
-    }
-
-    aside h3 {
-      font-size: 1rem;
-      margin-bottom: 0.5rem;
-      color: var(--white);
-    }
-
-    aside p {
-      font-size: 0.9rem;
-      color: var(--steel);
-      margin-bottom: 0.4rem;
-    }
-
-    aside a {
-      color: var(--rust);
-      font-weight: 600;
-      font-size: 0.9rem;
-    }
-
-    details summary {
+    #toggleSidebar {
+      position: absolute;
+      right: -22px;
+      top: 16px;
+      width: 24px;
+      height: 24px;
+      background-color: var(--rust);
       color: var(--white);
       font-weight: bold;
+      font-size: 1.1rem;
+      border-radius: 4px;
+      border: none;
       cursor: pointer;
-      margin-bottom: 0.5rem;
     }
 
-    ul {
-      list-style: none;
-      padding-left: 0;
+    #sidebar h2, #sidebar h3, #sidebar p, #sidebar a, #sidebar summary, #sidebar ul {
+      transition: opacity 0.2s ease;
     }
 
-    ul li {
-      margin-bottom: 0.3rem;
-      font-size: 0.9rem;
+    #sidebar.collapsed h2,
+    #sidebar.collapsed section,
+    #sidebar.collapsed summary,
+    #sidebar.collapsed ul {
+      opacity: 0;
+      pointer-events: none;
     }
 
-    /* Main Content */
     main {
+      margin-left: 280px;
       flex: 1;
       padding: 2rem;
+      transition: margin-left 0.3s ease;
+    }
+
+    #sidebar.collapsed + main {
+      margin-left: 40px;
+    }
+
+    h1.glow {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2.8rem;
+      font-weight: 700;
+      text-align: center;
+      color: var(--rust);
+      text-shadow: 0 0 8px var(--rust)55, 0 0 16px var(--rust)33;
+      margin-top: 1rem;
     }
 
     header {
       text-align: center;
-      padding: 2rem;
+      padding: 2rem 1rem;
     }
 
     .logo {
@@ -107,18 +113,9 @@
       filter: drop-shadow(0 0 8px var(--rust)80);
     }
 
-    h1.glow {
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 700;
-      font-size: 2.8rem;
-      color: var(--rust);
-      text-shadow: 0 0 8px var(--rust)55, 0 0 16px var(--rust)33;
-    }
-
     header p {
       font-size: 1rem;
       color: var(--steel);
-      margin-top: 0.5rem;
     }
 
     .grid {
@@ -134,7 +131,7 @@
       border-radius: 8px;
       padding: 1.5rem;
       text-align: center;
-      transition: background-color 0.2s, border-color 0.2s;
+      transition: 0.2s;
     }
 
     .card:hover {
@@ -145,8 +142,8 @@
     .card h2 {
       font-family: 'Montserrat', sans-serif;
       font-size: 1.4rem;
-      margin-bottom: 0.8rem;
       color: var(--rust);
+      margin-bottom: 0.8rem;
     }
 
     .card p {
@@ -163,8 +160,8 @@
     .mission {
       max-width: 800px;
       margin: 0 auto;
-      padding: 2rem 1rem;
       text-align: center;
+      padding: 2rem 1rem;
     }
 
     .mission h3 {
@@ -188,54 +185,102 @@
       margin-top: 2rem;
     }
 
-    /* Responsive Sidebar */
-    @media (max-width: 860px) {
-      body {
-        flex-direction: column;
-      }
+    #sidebar h2 {
+      font-size: 1.2rem;
+      font-family: 'Montserrat', sans-serif;
+      color: var(--rust);
+      margin-bottom: 1rem;
+    }
 
-      aside {
+    #sidebar h3 {
+      font-size: 1rem;
+      color: var(--white);
+      margin-bottom: 0.4rem;
+    }
+
+    #sidebar p, #sidebar a, #sidebar li {
+      font-size: 0.9rem;
+      color: var(--steel);
+      margin-bottom: 0.3rem;
+    }
+
+    details summary {
+      cursor: pointer;
+      font-weight: bold;
+      color: var(--white);
+      margin-bottom: 0.4rem;
+    }
+
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    ul li {
+      margin-bottom: 0.3rem;
+    }
+
+    @media (max-width: 800px) {
+      #sidebar {
+        position: relative;
         width: 100%;
         border-right: none;
         border-bottom: 1px solid var(--border);
+      }
+
+      #sidebar.collapsed {
+        height: 40px;
+        width: 100%;
+      }
+
+      #toggleSidebar {
+        position: absolute;
+        top: 8px;
+        right: 8px;
+      }
+
+      main {
+        margin-left: 0;
+        padding: 1rem;
       }
     }
   </style>
 </head>
 
 <body>
-  <aside id="sidebar">
+  <div id="sidebar">
+    <button id="toggleSidebar">📡</button>
     <h2>Studio Feedback</h2>
 
     <section>
-      <h3> Report a Bug</h3>
+      <h3>🐞 Report a Bug</h3>
       <p>If something breaks or glitches:</p>
       <a href="mailto:darkhalo.studio@gmail.com">darkhalo.studio@gmail.com</a>
     </section>
 
     <section>
       <details>
-        <summary>Review or Suggest Something</summary>
+        <summary>💬 Review or Suggest Something</summary>
         <p>You can share thoughts or pitch ideas:</p>
         <ul>
-          <li> Suggestions → <a href="mailto:darkhalo.studio@gmail.com">darkhalo.studio@gmail.com</a></li>
-          <li> Review → <a href="mailto:darkhalo.studio@gmail.com">Leave Review</a></li>
+          <li>🗣 Suggestions → <a href="mailto:darkhalo.studio@gmail.com">darkhalo.studio@gmail.com</a></li>
+          <li>⭐ Google Review → <a href="#">Leave Review</a></li>
         </ul>
       </details>
     </section>
 
     <section>
-      <h3> Join the Signal</h3>
-      <p>Follow our updates or engage directly:</p>
-      <a href="https://discord.gg/XA9H64CZ">Discord Invite</a>
+      <h3>📡 Join the Signal</h3>
+      <p>Discord Invite:</p>
+      <a href="#">Enter the Signal</a>
     </section>
 
     <section>
-      <h3> Apply for Collaborations</h3>
+      <h3>🤝 Apply for Collaborations</h3>
       <p>Want to build with Darkhalo?</p>
       <a href="mailto:darkhalo.studio@gmail.com">Send a proposal</a>
     </section>
-  </aside>
+  </div>
 
   <main>
     <header>
@@ -246,22 +291,24 @@
 
     <div class="grid">
       <div class="card">
-        <h2> Music Vault</h2>
+        <h2>🎵 Music Vault</h2>
         <p>Layered atmospheres, remixes, and original compositions.</p>
         <a href="music.html">Enter</a>
       </div>
       <div class="card">
-        <h2> Animation Archive</h2>
+        <h2>🎬 Animation Archive</h2>
         <p>Cinematic shorts, motion experiments, and visual storytelling.</p>
         <a href="animations.html">Enter</a>
       </div>
       <div class="card">
-        <h2> Lore Index</h2>
-        <p>Campaign logs, world-building dossiers, and narrative fragments.</p>
+        <h2>📜 Lore Index</h2>
+        <p>
+                  <p>Campaign logs, world-building dossiers, and narrative fragments.</p>
         <a href="lore.html">Enter</a>
       </div>
+
       <div class="card">
-        <h2> Commissions</h2>
+        <h2>🤝 Commissions</h2>
         <p>Professional collaborations, custom projects, and studio partnerships.</p>
         <a href="commissions.html">Engage</a>
       </div>
