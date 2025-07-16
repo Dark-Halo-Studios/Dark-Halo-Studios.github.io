@@ -1,14 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Music | Darkhalo Multi-Media</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
-  
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet" />
+
   <style>
+    :root {
+      --rust: #e86f46;
+      --bg: #121316;
+      --text: #f2f2f2;
+    }
+
     body {
-      background-color: #0d0f11;
-      color: #d0e0ef;
+      background-color: var(--bg);
+      color: var(--text);
       font-family: 'Orbitron', sans-serif;
       margin: 0;
       padding: 4rem;
@@ -18,7 +24,7 @@
     .glitch {
       position: relative;
       font-size: 3rem;
-      color: #7df9ff;
+      color: var(--rust);
       animation: fadeIn 1s ease-in-out 2.5s forwards;
       opacity: 0;
     }
@@ -29,7 +35,6 @@
       position: absolute;
       left: 0;
       width: 100%;
-      color: #7df9ff;
       background: transparent;
       overflow: hidden;
       clip-path: polygon(0 0, 100% 0, 100% 20%, 0 20%);
@@ -37,12 +42,14 @@
     }
 
     .glitch::before {
-      text-shadow: -2px 0 red;
+      color: var(--rust);
+      text-shadow: -2px 0 #a12f1a;
       top: 0;
     }
 
     .glitch::after {
-      text-shadow: 2px 0 cyan;
+      color: var(--rust);
+      text-shadow: 2px 0 var(--rust);
       top: 0;
       animation-delay: 0.2s;
     }
