@@ -71,7 +71,7 @@
       justify-content: center;
     }
 
-    /* Sidebar Links */
+    /* Sidebar Links & Collapse */
     #sidebar section {
       margin-bottom: 1.5rem;
     }
@@ -93,6 +93,23 @@
     }
     #sidebar section a:hover {
       text-decoration: underline;
+    }
+
+    /* Collapsible “Studio Feedback” */
+    #sidebar details {
+      margin-bottom: 1.5rem;
+    }
+    #sidebar summary {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.1rem;
+      color: var(--rust);
+      cursor: pointer;
+      list-style: none;
+      margin-bottom: 0.8rem;
+    }
+    /* Remove default arrow for summary */
+    #sidebar summary::-webkit-details-marker {
+      display: none;
     }
 
     /* Main Content */
@@ -224,42 +241,47 @@
   <div id="sidebar">
     <button id="toggleSidebar">📡</button>
 
+    <!-- Home -->
     <section>
       <h3>🏠 Home</h3>
       <p>Return to main hub:</p>
       <a href="index.html">Back to Darkhalo</a>
     </section>
 
-    <h2>Studio Feedback</h2>
-
+    <!-- Report a Bug (always visible) -->
     <section>
       <h3>🐞 Report a Bug</h3>
       <p>If something breaks or glitches:</p>
       <a href="mailto:darkhalo.studio@gmail.com">Email Us</a>
     </section>
 
-    <section>
-      <h3>💬 Suggestions</h3>
-      <p>Got ideas or tweaks?</p>
-      <a href="mailto:darkhalo.studio@gmail.com">Send Feedback</a>
-    </section>
+    <!-- Collapsible Studio Feedback group -->
+    <details open>
+      <summary>Studio Feedback</summary>
 
-    <section>
-      <h3>📡 Join the Signal</h3>
-      <p>Connect on Discord:</p>
-      <a href="#">Join Here</a>
-    </section>
+      <section>
+        <h3>💬 Suggestions</h3>
+        <p>Got ideas or tweaks?</p>
+        <a href="mailto:darkhalo.studio@gmail.com">Send Feedback</a>
+      </section>
 
-    <section>
-      <h3>🤝 Collaborations</h3>
-      <p>Pitch your project:</p>
-      <a href="mailto:darkhalo.studio@gmail.com">Apply Now</a>
-    </section>
+      <section>
+        <h3>📡 Join the Signal</h3>
+        <p>Connect on Discord:</p>
+        <a href="#">Join Here</a>
+      </section>
+
+      <section>
+        <h3>🤝 Collaborations</h3>
+        <p>Pitch your project:</p>
+        <a href="mailto:darkhalo.studio@gmail.com">Apply Now</a>
+      </section>
+    </details>
   </div>
 
   <main>
     <header>
-      <img src="dark-halo logo.png" alt="Darkhalo Logo" class="logo" />
+      <img src="logo.png" alt="Darkhalo Logo" class="logo" />
       <h1 class="glow">Lore Index</h1>
       <p>A compendium of narrative fragments, world-building dossiers & secret logs.</p>
     </header>
