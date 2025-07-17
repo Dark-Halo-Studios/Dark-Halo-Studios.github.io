@@ -69,16 +69,26 @@ position: fixed;
     }
 
    #toggleSidebar {
-  position: absolute;
-  top: 16px;
-  left: 12px; /* ← anchored to the left instead of drifting off the right */
-  z-index: 101;
-  width: 32px;
-  height: 32px;
-  background: var(--rust);
+ .sidebar-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  padding: 0.2rem 0.4rem;
+}
+
+.sidebar-home {
+  flex: 1;
+}
+
+#toggleSidebar {
+  background-color: var(--rust);
   color: var(--white);
   border: none;
   border-radius: 6px;
+  width: 36px;
+  height: 36px;
   font-size: 1.2rem;
   font-weight: bold;
   cursor: pointer;
