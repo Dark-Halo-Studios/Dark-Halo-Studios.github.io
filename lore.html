@@ -7,7 +7,7 @@
 
   <!-- Fonts -->
   <link
-    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Inter:wght@400;500;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Inter:wght@400;500;700&family=Orbitron:wght@500&display=swap"
     rel="stylesheet"/>
 
   <style>
@@ -20,6 +20,7 @@
       --border: #555555;
     }
 
+    /*— Global Reset & Layout —*/
     *, *::before, *::after {
       box-sizing: border-box;
       margin: 0;
@@ -32,13 +33,12 @@
       background: var(--bg);
       color: var(--white);
       font-family: 'Inter', sans-serif;
-      transition: margin-left 0.3s ease;
+      overflow-x: hidden;
     }
 
     /*— Sidebar —*/
     #sidebar {
-      #sidebar details {
-position: fixed;
+      position: fixed;
       top: 0; left: 0; bottom: 0;
       width: 280px;
       padding: 2rem;
@@ -46,129 +46,118 @@ position: fixed;
       border-right: 1px solid var(--border);
       overflow-y: auto;
       transition: width 0.3s ease;
-      z-index: 100;
-
-#sidebar details {
-  margin-bottom: 0.8rem; /* was 1rem — now a bit tighter */
-  padding: 0.4rem 0;     /* adds internal cushion for summary + content */
-  border-bottom: 1px solid var(--surface); /* faint divider line */
-}
-
-#sidebar summary {
-  margin-bottom: 0.3rem;
-}
-}
-
-#sidebar summary {
-  margin-bottom: 0.3rem;
-}
+      z-index: 10;
     }
+
     #sidebar.collapsed {
       width: 40px;
       padding: 1rem 0.4rem;
     }
 
-   #toggleSidebar {
- .sidebar-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.5rem;
-  margin-bottom: 1rem;
-  padding: 0.2rem 0.4rem;
-}
-
-.sidebar-home {
-  flex: 1;
-}
-
-#toggleSidebar {
-  background-color: var(--rust);
-  color: var(--white);
-  border: none;
-  border-radius: 6px;
-  width: 36px;
-  height: 36px;
-  font-size: 1.2rem;
-  font-weight: bold;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-    }
+    /* Hide everything except toggle when collapsed */
     #sidebar.collapsed *:not(#toggleSidebar) {
       display: none;
     }
 
+    /* Toggle Button */
+    #toggleSidebar {
+      position: absolute;
+      top: 16px;
+      right: -12px;
+      width: 32px;
+      height: 32px;
+      background: var(--rust);
+      color: var(--white);
+      border: none;
+      border-radius: 6px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      z-index: 11;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Sidebar Content */
     #sidebar h2 {
       font-family: 'Montserrat', sans-serif;
       color: var(--rust);
       font-size: 1.2rem;
       margin-bottom: 1.5rem;
     }
-    #sidebar h3 {
-      color: var(--white);
+
+    #sidebar section {
+      margin-bottom: 1.5rem;
+    }
+
+    #sidebar section h3 {
       font-size: 1rem;
+      color: var(--white);
       margin-bottom: 0.4rem;
     }
-    #sidebar p, #sidebar a, #sidebar li {
+
+    #sidebar section p {
       color: var(--steel);
       font-size: 0.9rem;
       margin-bottom: 0.3rem;
     }
-    #sidebar a {
+
+    #sidebar section a {
       color: var(--rust);
       font-weight: 600;
       text-decoration: none;
+      font-size: 0.9rem;
     }
-    details summary {
-      cursor: pointer;
-      font-weight: bold;
-      color: var(--white);
-      margin-bottom: 0.4rem;
+
+    #sidebar section a:hover {
+      text-decoration: underline;
     }
-    ul { list-style: none; padding-left: 0; }
-    ul li { margin-bottom: 0.3rem; }
 
     /*— Main Content —*/
     main {
-      flex: 1;
       margin-left: 280px;
+      flex: 1;
       padding: 2rem;
       transition: margin-left 0.3s ease;
     }
+
     #sidebar.collapsed + main {
       margin-left: 40px;
     }
 
+    /* Header */
     header {
       text-align: center;
       padding: 2rem 1rem;
     }
-     .logo {
-      max-width: 100px;
+
+    .logo {
+      max-width: 140px;
       margin-bottom: 1rem;
       filter: drop-shadow(0 0 8px var(--rust)80);
     }
+
     h1.glow {
-      font-family: 'Montserrat', sans-serif;
+      font-family: 'Orbitron', sans-serif;
       font-size: 2.8rem;
       color: var(--rust);
       text-shadow: 0 0 8px var(--rust)55, 0 0 16px var(--rust)33;
       margin-bottom: 0.5rem;
     }
+
     header p {
       color: var(--steel);
       font-size: 1rem;
     }
 
+    /* Grid Cards */
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(240px,1fr));
       gap: 2rem;
       padding: 2rem 0;
     }
+
     .card {
       background: var(--surface);
       border: 1px solid var(--steel)33;
@@ -177,10 +166,12 @@ position: fixed;
       text-align: center;
       transition: background 0.2s, border-color 0.2s;
     }
+
     .card:hover {
       background: #1f2023;
       border-color: var(--rust);
     }
+
     .card h2 {
       font-family: 'Montserrat', sans-serif;
       font-size: 1.4rem;
@@ -188,35 +179,44 @@ position: fixed;
       text-shadow: 0 0 8px var(--rust)33;
       margin-bottom: 0.8rem;
     }
+
     .card p {
       color: var(--steel);
       font-size: 0.9rem;
       margin-bottom: 1rem;
     }
+
     .card a {
       color: var(--rust);
       font-weight: bold;
       text-decoration: none;
     }
-    .card a:hover { text-decoration: underline; }
 
+    .card a:hover {
+      text-decoration: underline;
+    }
+
+    /* Mission Blurb */
     .mission {
       max-width: 800px;
       margin: 0 auto;
       padding: 2rem 1rem;
       text-align: center;
     }
+
     .mission h3 {
       font-family: 'Montserrat', sans-serif;
       color: var(--rust);
       font-size: 1.2rem;
       margin-bottom: 1rem;
     }
+
     .mission p {
       color: var(--steel);
       font-size: 0.95rem;
     }
 
+    /* Footer */
     footer {
       text-align: center;
       padding: 2rem;
@@ -226,7 +226,7 @@ position: fixed;
       margin-top: 2rem;
     }
 
-    /*— Responsive —*/
+    /* Responsive */
     @media (max-width: 860px) {
       #sidebar {
         position: relative;
@@ -240,7 +240,7 @@ position: fixed;
       }
       #toggleSidebar {
         top: 8px;
-        right: 8px;
+        right: 12px;
       }
       main {
         margin-left: 0;
@@ -251,42 +251,39 @@ position: fixed;
 </head>
 
 <body>
- <div class="sidebar-row">
-  <details class="sidebar-home">
-    <summary>🏠 Home</summary>
-    <a href="index.html">Back to Darkhalo</a>
-  </details>
+  <div id="sidebar">
+    <button id="toggleSidebar">📡</button>
 
-  <button id="toggleSidebar">📡</button>
-</div>
+    <h2>Studio Feedback</h2>
 
-  <details>
-    <summary>🐞 Report a Bug</summary>
-    <p><a href="mailto:darkhalo.studio@gmail.com">Send Email</a></p>
-  </details>
+    <section>
+      <h3>🐞 Report a Bug</h3>
+      <p>If something breaks or glitches:</p>
+      <a href="mailto:darkhalo.studio@gmail.com">Email Us</a>
+    </section>
 
-  <details>
-    <summary>💬 Suggestions</summary>
-    <ul>
-      <li><a href="mailto:darkhalo.studio@gmail.com">Email Studio</a></li>
-      <li><a href="#">Leave Google Review</a></li>
-    </ul>
-  </details>
+    <section>
+      <h3>💬 Suggestions</h3>
+      <p>Got ideas or tweaks?</p>
+      <a href="mailto:darkhalo.studio@gmail.com">Send Feedback</a>
+    </section>
 
-  <details>
-    <summary>📡 Join Signal</summary>
-    <p><a href="#">Connect via Discord</a></p>
-  </details>
+    <section>
+      <h3>📡 Join the Signal</h3>
+      <p>Connect on Discord:</p>
+      <a href="#">Join Here</a>
+    </section>
 
-  <details>
-    <summary>🤝 Collaborate</summary>
-    <p><a href="mailto:darkhalo.studio@gmail.com">Apply via Email</a></p>
-  </details>
-</div>
+    <section>
+      <h3>🤝 Collaborations</h3>
+      <p>Pitch your project:</p>
+      <a href="mailto:darkhalo.studio@gmail.com">Apply Now</a>
+    </section>
+  </div>
 
   <main>
     <header>
-      <img src="dark-halo logo.png" alt="Darkhalo Logo" class="logo"/>
+      <img src="logo.png" alt="Darkhalo Logo" class="logo" />
       <h1 class="glow">Lore Index</h1>
       <p>A compendium of narrative fragments, world-building dossiers & secret logs.</p>
     </header>
@@ -297,20 +294,17 @@ position: fixed;
         <p>Deep dives into Darkhalo’s protagonists, antagonists & hidden figures.</p>
         <a href="characters.html">Explore</a>
       </div>
+
       <div class="card">
         <h2>Setting Dossiers</h2>
         <p>Detailed maps, environmental notes & socio-political backstories.</p>
         <a href="settings.html">Explore</a>
       </div>
+
       <div class="card">
         <h2>Faction Histories</h2>
         <p>Origins, alliances & rivalries of in-world organizations.</p>
         <a href="factions.html">Explore</a>
-      </div>
-      <div class="card">
-        <h2>Artifact Logs</h2>
-        <p>Entries on relics, tech-wonders & mythic items that shape the lore.</p>
-        <a href="artifacts.html">Explore</a>
       </div>
     </div>
 
