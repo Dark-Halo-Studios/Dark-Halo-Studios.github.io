@@ -68,20 +68,24 @@ position: fixed;
       padding: 1rem 0.4rem;
     }
 
-    #toggleSidebar {
-      position: absolute;
-      top: 16px; right: -12px;
-      width: 32px; height: 32px;
-      background: var(--rust);
-      color: var(--white);
-      border: none;
-      border-radius: 6px;
-      font-size: 1.2rem;
-      cursor: pointer;
-      z-index: 101;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+   #toggleSidebar {
+  position: absolute;
+  top: 16px;
+  left: 12px; /* ← anchored to the left instead of drifting off the right */
+  z-index: 101;
+  width: 32px;
+  height: 32px;
+  background: var(--rust);
+  color: var(--white);
+  border: none;
+  border-radius: 6px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
     }
     #sidebar.collapsed *:not(#toggleSidebar) {
       display: none;
