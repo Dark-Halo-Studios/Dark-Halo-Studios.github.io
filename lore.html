@@ -4,8 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
   <title>Lore | Darkhalo Multi-Media</title>
-
-  <!-- Fonts -->
   <link
     href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Inter:wght@400;500;700&family=Orbitron:wght@500&display=swap"
     rel="stylesheet"/>
@@ -20,13 +18,12 @@
       --border: #555555;
     }
 
-    /*— Global Reset & Layout —*/
+    /* Global Reset & Layout */
     *, *::before, *::after {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
-
     body {
       display: flex;
       min-height: 100vh;
@@ -36,7 +33,7 @@
       overflow-x: hidden;
     }
 
-    /*— Sidebar —*/
+    /* Sidebar */
     #sidebar {
       position: fixed;
       top: 0; left: 0; bottom: 0;
@@ -48,13 +45,10 @@
       transition: width 0.3s ease;
       z-index: 10;
     }
-
     #sidebar.collapsed {
       width: 40px;
       padding: 1rem 0.4rem;
     }
-
-    /* Hide everything except toggle when collapsed */
     #sidebar.collapsed *:not(#toggleSidebar) {
       display: none;
     }
@@ -64,8 +58,7 @@
       position: absolute;
       top: 16px;
       right: -12px;
-      width: 32px;
-      height: 32px;
+      width: 32px; height: 32px;
       background: var(--rust);
       color: var(--white);
       border: none;
@@ -78,49 +71,37 @@
       justify-content: center;
     }
 
-    /* Sidebar Content */
-    #sidebar h2 {
-      font-family: 'Montserrat', sans-serif;
-      color: var(--rust);
-      font-size: 1.2rem;
-      margin-bottom: 1.5rem;
-    }
-
+    /* Sidebar Links */
     #sidebar section {
       margin-bottom: 1.5rem;
     }
-
     #sidebar section h3 {
       font-size: 1rem;
       color: var(--white);
       margin-bottom: 0.4rem;
     }
-
     #sidebar section p {
       color: var(--steel);
       font-size: 0.9rem;
       margin-bottom: 0.3rem;
     }
-
     #sidebar section a {
       color: var(--rust);
       font-weight: 600;
       text-decoration: none;
       font-size: 0.9rem;
     }
-
     #sidebar section a:hover {
       text-decoration: underline;
     }
 
-    /*— Main Content —*/
+    /* Main Content */
     main {
       margin-left: 280px;
       flex: 1;
       padding: 2rem;
       transition: margin-left 0.3s ease;
     }
-
     #sidebar.collapsed + main {
       margin-left: 40px;
     }
@@ -130,13 +111,11 @@
       text-align: center;
       padding: 2rem 1rem;
     }
-
     .logo {
       max-width: 140px;
       margin-bottom: 1rem;
       filter: drop-shadow(0 0 8px var(--rust)80);
     }
-
     h1.glow {
       font-family: 'Orbitron', sans-serif;
       font-size: 2.8rem;
@@ -144,7 +123,6 @@
       text-shadow: 0 0 8px var(--rust)55, 0 0 16px var(--rust)33;
       margin-bottom: 0.5rem;
     }
-
     header p {
       color: var(--steel);
       font-size: 1rem;
@@ -157,7 +135,6 @@
       gap: 2rem;
       padding: 2rem 0;
     }
-
     .card {
       background: var(--surface);
       border: 1px solid var(--steel)33;
@@ -166,12 +143,10 @@
       text-align: center;
       transition: background 0.2s, border-color 0.2s;
     }
-
     .card:hover {
       background: #1f2023;
       border-color: var(--rust);
     }
-
     .card h2 {
       font-family: 'Montserrat', sans-serif;
       font-size: 1.4rem;
@@ -179,19 +154,16 @@
       text-shadow: 0 0 8px var(--rust)33;
       margin-bottom: 0.8rem;
     }
-
     .card p {
       color: var(--steel);
       font-size: 0.9rem;
       margin-bottom: 1rem;
     }
-
     .card a {
       color: var(--rust);
       font-weight: bold;
       text-decoration: none;
     }
-
     .card a:hover {
       text-decoration: underline;
     }
@@ -203,14 +175,12 @@
       padding: 2rem 1rem;
       text-align: center;
     }
-
     .mission h3 {
       font-family: 'Montserrat', sans-serif;
       color: var(--rust);
       font-size: 1.2rem;
       margin-bottom: 1rem;
     }
-
     .mission p {
       color: var(--steel);
       font-size: 0.95rem;
@@ -254,6 +224,12 @@
   <div id="sidebar">
     <button id="toggleSidebar">📡</button>
 
+    <section>
+      <h3>🏠 Home</h3>
+      <p>Return to main hub:</p>
+      <a href="index.html">Back to Darkhalo</a>
+    </section>
+
     <h2>Studio Feedback</h2>
 
     <section>
@@ -283,7 +259,7 @@
 
   <main>
     <header>
-      <img src="dark-halo logo.png" alt="Darkhalo Logo" class="logo" />
+      <img src="logo.png" alt="Darkhalo Logo" class="logo" />
       <h1 class="glow">Lore Index</h1>
       <p>A compendium of narrative fragments, world-building dossiers & secret logs.</p>
     </header>
@@ -305,6 +281,12 @@
         <h2>Faction Histories</h2>
         <p>Origins, alliances & rivalries of in-world organizations.</p>
         <a href="factions.html">Explore</a>
+      </div>
+
+      <div class="card">
+        <h2>Artifact Logs</h2>
+        <p>Entries on relics, tech-wonders & mythic items that shape the lore.</p>
+        <a href="artifacts.html">Explore</a>
       </div>
     </div>
 
