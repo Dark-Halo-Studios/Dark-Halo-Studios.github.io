@@ -37,7 +37,8 @@
 
     /*— Sidebar —*/
     #sidebar {
-      position: fixed;
+      #sidebar details {
+position: fixed;
       top: 0; left: 0; bottom: 0;
       width: 280px;
       padding: 2rem;
@@ -46,6 +47,21 @@
       overflow-y: auto;
       transition: width 0.3s ease;
       z-index: 100;
+
+#sidebar details {
+  margin-bottom: 0.8rem; /* was 1rem — now a bit tighter */
+  padding: 0.4rem 0;     /* adds internal cushion for summary + content */
+  border-bottom: 1px solid var(--surface); /* faint divider line */
+}
+
+#sidebar summary {
+  margin-bottom: 0.3rem;
+}
+}
+
+#sidebar summary {
+  margin-bottom: 0.3rem;
+}
     }
     #sidebar.collapsed {
       width: 40px;
